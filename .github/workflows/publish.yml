@@ -1,0 +1,35 @@
+name: Publish
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  release-patch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run release:patch -- --ci --github.release \
+        --git.pushRepo=https://${{secrets.RELEASE_TOKEN}}@github.com/donalmacanri/nomie6-oss.git
+      env:
+        GIT_COMMITTER_NAME: Nomie Release Bot
+        GIT_COMMITTER_EMAIL: releasebot@example.com
+        GIT_AUTHOR_NAME: Nomie Release Bot
+        GIT_AUTHOR_EMAIL: releasebot@example.com
+        GITHUB_TOKEN: ${{ github.token }}
+
+  # publish:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - run: |
+  #     curl -X POST \
+  #       -H "Authorization: Bearer ${{secrets.DEPLOY_TOKEN}}" \
+  #       -H "Accept: application/vnd.github.v3+json" \
+  #       https://api.github.com/repos/open-nomie/open-nomie.github.io/actions/workflows/deploy.yml/dispatches \
+  #       -d '{"ref": "master"}'
