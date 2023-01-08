@@ -32,7 +32,7 @@ jobs:
           node-version: 16
           cache: 'npm'
       - run: npm ci
-      - run: npm run vbuild -- --base=/nomie6-oss
+      - run: npm run vbuild -- --base=/nomie6-oss/
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
