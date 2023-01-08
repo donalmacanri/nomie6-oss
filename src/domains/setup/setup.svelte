@@ -91,7 +91,7 @@
       } else if (state.activeSlide === slides.length - 1) {
         $Prefs.onboarded = true
         wait(100).then(() => {
-          window.location.href = '/'
+          window.location.href = import.meta.env.BASE_URL
         })
       }
     }}

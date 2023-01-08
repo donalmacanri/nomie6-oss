@@ -5,6 +5,7 @@ import Storage, { StorageEngines } from '../../domains/storage/storage'
 import { Interact } from '../../store/interact'
 import { Lang } from '../../store/lang'
 
+
 import { wait } from '../../utils/tick/tick'
 import { deleteAllFromCache } from '../ledger/ledger-cache'
 
@@ -23,7 +24,7 @@ export const switchToLocal = async () => {
   )
   if (confirmed) {
     saveStorageType('local')
-    window.location.href = '/'
+    window.location.href = import.meta.env.BASE_URL
   }
 }
 
