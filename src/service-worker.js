@@ -19,12 +19,12 @@ const RUNTIME = "runtime-APP_VERSION";
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
-  "index.html",
-  "manifest.json",
-  "favicon.png",
-  "images/nomie-head-on.png",
-  "images/icons/nomie-android-192.png",
-  "./", // Alias for index.html
+  "nomie6-oss/index.html",
+  "nomie6-oss/manifest.json",
+  "nomie6-oss/favicon.png",
+  "nomie6-oss/images/nomie-head-on.png",
+  "nomie6-oss/images/icons/nomie-android-192.png",
+  "nomie6-oss/", // Alias for index.html
 ];
 
 // The install handler takes care of precaching the resources we always need.
