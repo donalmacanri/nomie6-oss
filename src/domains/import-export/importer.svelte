@@ -73,7 +73,7 @@
       await LedgerStore.getFirstDate(true)
       let confirmed = await Interact.confirm('Import Complete. Restart?', `It's best to reload Nomie after an import`)
       if (confirmed) {
-        document.location.href = '/'
+        document.location.href = import.meta.env.BASE_URL
       }
     },
     // On Import File

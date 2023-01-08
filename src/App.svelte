@@ -136,7 +136,7 @@
 
   if (window.location.href.search(/\?bypass/gi) > -1) {
     $Prefs.storageType = 'local'
-    window.location.href = '/'
+    window.location.href = import.meta.env.BASE_URL
   }
 
   $: if (mounted && !$Prefs.onboarded) {
@@ -204,7 +204,7 @@
       }, 3500)
     })
     if (document.location.pathname.search('/modal') > -1) {
-      document.location.href = '/'
+      document.location.href = import.meta.env.BASE_URL
     }
   })
 </script>

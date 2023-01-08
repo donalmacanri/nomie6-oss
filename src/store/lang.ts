@@ -58,7 +58,7 @@ const LangInit = () => {
       localStorage.setItem("n4-lang", langKey);
       setTimeout(() => {
         // window.location.reload();
-        window.location.href = "/";
+        window.location.href = import.meta.env.BASE_URL;
       }, 10);
     },
   };

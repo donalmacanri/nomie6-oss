@@ -122,7 +122,7 @@ export const deleteEverything = async () => {
         Interact.stopBlocker()
         await Interact.alert('Done', 'Your data has been destroyed.')
 
-        window.location.href = '/'
+        window.location.href = import.meta.env.BASE_URL
       }
     } // end if confirmed
   } catch (e) {
