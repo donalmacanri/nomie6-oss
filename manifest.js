@@ -60,7 +60,7 @@ export default {
       purpose: 'any',
     },
     {
-      src: '/app-icons/nomie6-head-144.png',
+      src: '/nomie6-oss/app-icons/nomie6-head-144.png',
       sizes: '144x144',
       type: 'image/png',
       purpose: 'any',
