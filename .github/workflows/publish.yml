@@ -26,8 +26,10 @@ jobs:
         cp $release_zip /tmp
         git clean -f
         echo "release_zip=/tmp/$(basename $release_zip)" >> $GITHUB_OUTPUT
+    - run: |
+        git remote rm origin
+        git remote add origin https://git:${{secrets.RELEASE_TOKEN}}@github.com/donalmacanri/nomie6-oss.git
     - run: npm run release:patch -- --ci --github.release \
-        --git.pushRepo=https://nomie-release-bot:${{secrets.RELEASE_TOKEN}}@github.com/donalmacanri/nomie6-oss.git \
         --github.assets=${{steps.clean_working_dir.outputs.release_zip}}
       env:
         GIT_COMMITTER_NAME: Nomie Release Bot
