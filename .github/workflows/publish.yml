@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-#     - run: npm ci
+    - run: npm ci
 #     - run: npm run vbuild
 #     - run: npm run generate-zip
 #     - id: clean_working_dir
