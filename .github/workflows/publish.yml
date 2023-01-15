@@ -16,16 +16,16 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-    - run: npm ci
-    - run: npm run vbuild
-    - run: npm run generate-zip
-    - id: clean_working_dir
-      run: |
-        git reset --hard
-        release_zip=$(git ls-files --others --exclude-standard | grep "nomie6-oss.*.zip")
-        cp $release_zip /tmp
-        git clean -f
-        echo "release_zip=/tmp/$(basename $release_zip)" >> $GITHUB_OUTPUT
+#     - run: npm ci
+#     - run: npm run vbuild
+#     - run: npm run generate-zip
+#     - id: clean_working_dir
+#       run: |
+#         git reset --hard
+#         release_zip=$(git ls-files --others --exclude-standard | grep "nomie6-oss.*.zip")
+#         cp $release_zip /tmp
+#         git clean -f
+#         echo "release_zip=/tmp/$(basename $release_zip)" >> $GITHUB_OUTPUT
     - run: |
         git remote rm origin
         git remote add origin https://git:${{secrets.RELEASE_TOKEN}}@github.com/donalmacanri/nomie6-oss.git
@@ -35,6 +35,8 @@ jobs:
       env:
         GIT_COMMITTER_NAME: Nomie Release Bot
         GIT_AUTHOR_NAME: Nomie Release Bot
+        GIT_COMMITTER_EMAIL: a@b.com
+        GIT_AUTHOR_EMAIL: a@b.com
         GITHUB_TOKEN: ${{secrets.RELEASE_TOKEN}}
 
   publish:
