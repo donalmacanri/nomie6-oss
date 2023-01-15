@@ -31,10 +31,11 @@ jobs:
         git remote add origin https://git:${{secrets.RELEASE_TOKEN}}@github.com/donalmacanri/nomie6-oss.git
         git fetch
         git branch -u origin/master
-    - run: npm run release:patch -- --ci
+    - run: npm run release:patch -- --ci --github.release --github.assets=${{steps.clean_working_dir.outputs.release_zip}}
       env:
         GIT_COMMITTER_NAME: Nomie Release Bot
         GIT_AUTHOR_NAME: Nomie Release Bot
+        GITHUB_TOKEN: ${{secrets.RELEASE_TOKEN}}
 
   publish:
     if: github.event.commits[0].author.name != 'Nomie Release Bot'
