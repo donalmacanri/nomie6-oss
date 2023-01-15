@@ -30,9 +30,8 @@ jobs:
         git remote rm origin
         git remote add origin https://git:${{secrets.RELEASE_TOKEN}}@github.com/donalmacanri/nomie6-oss.git
         git symbolic-ref HEAD refs/heads/master
-    - run: npm run release:patch -- --ci --github.release \
-        --no-git.requireUpstream \
-        --github.assets=${{steps.clean_working_dir.outputs.release_zip}}
+        git branch -u origin/master
+    - run: npm run release:patch -- --ci --github.release --github.assets=${{steps.clean_working_dir.outputs.release_zip}}
       env:
         GIT_COMMITTER_NAME: Nomie Release Bot
         GIT_AUTHOR_NAME: Nomie Release Bot
